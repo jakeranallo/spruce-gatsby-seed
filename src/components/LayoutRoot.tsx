@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from '../apollo/client'
+import { SpruceProvider } from '../global'
 
 const StyledLayoutRoot = styled.div`
   display: flex;
@@ -15,7 +16,9 @@ interface LayoutRootProps {
 
 const LayoutRoot: React.FC<LayoutRootProps> = ({ children, className }) => (
   <ApolloProvider client={client}>
-    <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
+    <SpruceProvider>
+      <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
+    </SpruceProvider>
   </ApolloProvider>
 )
 
