@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Global, css } from '@emotion/core'
 import styled from 'styled-components'
-import normalize from '../styles/normalize'
+import { ApolloProvider } from 'react-apollo'
+import { client } from '../apollo/client'
 
 const StyledLayoutRoot = styled.div`
   display: flex;
@@ -14,10 +14,9 @@ interface LayoutRootProps {
 }
 
 const LayoutRoot: React.FC<LayoutRootProps> = ({ children, className }) => (
-  <>
-    <Global styles={() => css(normalize)} />
+  <ApolloProvider client={client}>
     <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
-  </>
+  </ApolloProvider>
 )
 
 export default LayoutRoot
